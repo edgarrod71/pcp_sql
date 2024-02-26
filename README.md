@@ -1,6 +1,1 @@
-#rocky está bien,
-#ahora Zhazam!
-
-dice que no hay opciones
-=======
-#Bill Baxton?
+las pelis de tomas cruz son buenas
