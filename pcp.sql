@@ -367,8 +367,8 @@ CREATE TABLE C008$CONTRATOS (NUM_CONTRATO VARCHAR(12) NOT NULL,
         GPA VARCHAR(30),
         PORT_EXPORT VARCHAR(30),
         PLANTA VARCHAR(12),
-        DAT_EXPORT TIMESTAMP DEFAULT 'NOW',
-        DAT_ARRIVAL TIMESTAMP DEFAULT 'NOW',
+        DAT_EXPORT TIMESTAMP DEFAULT 'NOW', -- CURRENT_TIMESTAMP
+        DAT_ARRIVAL TIMESTAMP DEFAULT 'NOW', -- CURRENT_TIMESTAMP
         PORT_ENTRY VARCHAR(30) DEFAULT 'MIAMI - UNITED STATES',
         QUOTA_CATEGORY VARCHAR(12) DEFAULT '347',
         FINAL_DESTINATION VARCHAR(10),
@@ -385,7 +385,8 @@ CREATE TABLE C008$CONTRATOS (NUM_CONTRATO VARCHAR(12) NOT NULL,
         COR_N VARCHAR(6),
         MILL VARCHAR(3),
         RECEIVED VARCHAR(8),
-        PRODUCT COMPUTED BY (cod_referencia || '-' || cod_lavado),
+        PRODUCT COMPUTED BY (cod_referencia || '-' || cod_lavado), 
+        /* PRODUCT VARCHAR(30) AS (CONCAT(cod_referencia, '-', cod_lavado)), */
 CONSTRAINT PK_C008$CONTRATOS PRIMARY KEY (NUM_CONTRATO));
 
 /*  Table: C008$COR_PROD, Owner: SYSDBA  */
@@ -7930,15 +7931,15 @@ CREATE EXCEPTION EXC_PCP_0008 'El valor del salario está fuera del rango del ni
 CREATE EXCEPTION EXC_PCP_0009 'El código CST es un código registrado de Softconf Limitada';
 CREATE EXCEPTION EXC_PCP_0010 'La variación destino debe tener algún valor.';
 CREATE EXCEPTION EXC_PCP_0011 'Existen etapas de producción posteriores, que ya fueron finalizadas.';
-CREATE EXCEPTION EXC_PCP_0012 'La longitud del c󤩧o de barras no es correcta.';
-CREATE EXCEPTION EXC_PCP_0013 'La fecha de inicio del proceso no es v⭩da.';
-CREATE EXCEPTION EXC_PCP_0014 'La orden de producci󮠥stᡭarcada como FINALIZADA.';
-CREATE EXCEPTION EXC_PCP_0015 'El proceso de loteo de la orden de producci󮠹a fue finalizado.';
-CREATE EXCEPTION EXC_PCP_0016 'El lote de producci󮠥stᡭarcado como FINALIZADO.';
-CREATE EXCEPTION EXC_PCP_0017 'El proceso de liquidaci󮠤e la orden de corte ya fue finalizado.';
-CREATE EXCEPTION EXC_PCP_0018 'El proceso de creaci󮠤e operaciones de costura ya fue finalizado.';
+CREATE EXCEPTION EXC_PCP_0012 'La longitud del código de barras no es correcta.';
+CREATE EXCEPTION EXC_PCP_0013 'La fecha de inicio del proceso no es válida.';
+CREATE EXCEPTION EXC_PCP_0014 'La orden de producción se marcó como FINALIZADA.';
+CREATE EXCEPTION EXC_PCP_0015 'El proceso de loteo de la orden de producción fue finalizado.';
+CREATE EXCEPTION EXC_PCP_0016 'El lote de producción se marcó como FINALIZADO.';
+CREATE EXCEPTION EXC_PCP_0017 'El proceso de liquidación de la orden de corte ya fue finalizado.';
+CREATE EXCEPTION EXC_PCP_0018 'El proceso de creación de operaciones de costura ya fue finalizado.';
 CREATE EXCEPTION EXC_PCP_0019 'El proceso de tiquetes de control de costura ya fue finalizado.';
-CREATE EXCEPTION EXC_PCP_0020 'El proceso de creaci󮠤e operaciones de corte ya fue finalizado.';
+CREATE EXCEPTION EXC_PCP_0020 'El proceso de creación operaciones de corte ya fue finalizado.';
 CREATE EXCEPTION EXC_PCP_0021 'No se puede mover hacia arriba el primer registro.';
 CREATE EXCEPTION EXC_PCP_0022 'No se puede mover hacia abajo el 򬴩mo registro.';
 CREATE EXCEPTION EXC_PCP_0023 'La referencia ya tiene asignado un material b⴩co en la lista de materiales.';
